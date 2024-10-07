@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Content/UI/main.uss?fileID=7433441132597879392&amp;guid=ab7b089d95a1f2146adc551f76ca2cff&amp;type=3#main" />
+    <ui:VisualElement name="root" style="flex-grow: 1; flex-shrink: 1; flex-wrap: nowrap; flex-direction: column; align-items: center;">
+        <ui:VisualElement name="image" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Content/Graphics/Images/kachow_tex.jpg?fileID=2800000&amp;guid=ce0058f2233cbc44a8aa127521cee5e2&amp;type=3#kachow_tex&quot;); -unity-background-scale-mode: scale-to-fit; flex-wrap: nowrap; flex-basis: auto; width: 100%; height: 177px;" />
+        <ui:Label text="{0} &lt;sprite=0&gt;" name="price" style="-unity-text-align: middle-center; -unity-font-style: bold; color: rgb(255, 255, 255); font-size: 25px; background-color: rgb(255, 16, 193); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: auto; flex-direction: column; padding-left: 10px;" />
+    </ui:VisualElement>
+</ui:UXML>

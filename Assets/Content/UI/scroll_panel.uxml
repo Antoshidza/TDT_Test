@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Content/UI/main.uss?fileID=7433441132597879392&amp;guid=ab7b089d95a1f2146adc551f76ca2cff&amp;type=3#main" />
+    <ui:ListView name="sroll_panel" virtualization-method="DynamicHeight" focusable="false" selection-type="None" enabled="true" allow-add="false" allow-remove="false" item-template="project://database/Assets/Content/UI/image_with_price.uxml?fileID=9197481963319205126&amp;guid=8d60f76d53eacfe4abb2dd1fe615f541&amp;type=3#image_with_price" style="flex-grow: 1; align-items: stretch; align-content: auto; visibility: hidden;" />
+</ui:UXML>

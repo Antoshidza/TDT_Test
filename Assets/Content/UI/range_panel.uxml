@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Content/UI/main.uss?fileID=7433441132597879392&amp;guid=ab7b089d95a1f2146adc551f76ca2cff&amp;type=3#main" />
+    <ui:Label text="0m" name="cubes_range_label" selectable="false" enable-rich-text="true" style="align-items: stretch; -unity-text-align: upper-center; -unity-font-style: bold; font-size: 30px; color: rgb(255, 255, 255);" />
+</ui:UXML>
