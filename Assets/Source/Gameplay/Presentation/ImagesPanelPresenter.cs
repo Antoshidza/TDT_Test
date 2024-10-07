@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Source.App.ImageLoader;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -10,7 +10,7 @@ namespace Source.Gameplay.Presentation
 {
     public class ImagesPanelPresenter
     {
-        public ImagesPanelPresenter(UIDocument imagesPanel, int imagesCount, CancellationToken ct)
+        public ImagesPanelPresenter(UIDocument imagesPanel, int imagesCount, ImageLoadService imageLoadService, CancellationToken ct)
         {
             var imagesData = new List<ImageData>(imagesCount);
             
@@ -28,22 +28,15 @@ namespace Source.Gameplay.Presentation
             };
             
             for (int i = 0; i < imagesCount; i++) 
-                LoadAndCreateImage(imagesData, ct).ContinueWith(listView.RefreshItems).Forget();
-        }
-
-        // TODO: move it to separate service
-        private static async UniTask LoadAndCreateImage(List<ImageData> imagesData, CancellationToken ct)
-        {
-            var tex = DownloadHandlerTexture.GetContent(await UnityWebRequestTexture
-                .GetTexture($"https://random.imagecdn.app/{Random.Range(500, 1000)}/{Random.Range(500, 1000)}")
-                .SendWebRequest()
-                .WithCancellation(ct));
-            
-            imagesData.Add(new ImageData 
-            { 
-                Texture = tex, 
-                Price = Random.Range(0, int.MaxValue) 
-            });
+                imageLoadService.LoadImage(ct).ContinueWith(tex =>
+                {
+                    imagesData.Add(new ImageData 
+                    { 
+                        Texture = tex, 
+                        Price = Random.Range(0, int.MaxValue) 
+                    });
+                    listView.RefreshItems();
+                }).Forget();
         }
 
         private struct ImageData

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Cysharp.Threading.Tasks;
 using Reflex.Core;
+using Source.App.ImageLoader;
 using Source.Gameplay.Presentation;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -25,8 +26,8 @@ namespace Source.Gameplay.DI
             containerBuilder.AddSingleton(new CubesPresenter(_cubeViews, _spheres, _imagesPanelView), typeof(CubesPresenter));
             containerBuilder.AddSingleton(new CubesRangePresenter(_cubeViews.Select(view => view.transform), _cubeVFXView,
                 _gameplayPresentationConfig, _cubesRangePanel), typeof(CubesRangePresenter));
-            containerBuilder.AddSingleton(new ImagesPanelPresenter(_imagesPanel, _gameplayPresentationConfig.ImagesCount, viewLayerCt),
-                typeof(ImagesPanelPresenter));
+            containerBuilder.AddSingleton(new ImagesPanelPresenter(_imagesPanel, _gameplayPresentationConfig.ImagesCount, 
+                containerBuilder.Parent.Single<ImageLoadService>(), viewLayerCt), typeof(ImagesPanelPresenter));
             
             containerBuilder.OnContainerBuilt += container => container.Single<MovableModel>().Body = _rigidbody;
         }
